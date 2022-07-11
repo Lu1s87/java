@@ -1,0 +1,481 @@
+//reset
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@import "layout/menu";
+@import "layout/colorBoostrap";
+
+//Variables
+$margenSuperior: 130px;
+@mixin grid{
+    display: grid;
+    margin-top: $margenSuperior;
+    grid-template-columns: 500px 500px;
+    column-gap: 30px;
+    grid-template-rows: 375px 375px 375px;
+    row-gap: 25px; 
+}
+
+%flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+//Estilos generales
+
+body{
+    background-image: linear-gradient(to right, rgb(231, 224, 190), rgb(247, 238, 202));
+}
+
+p{
+    color: #c6243c;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+}
+
+footer{
+    margin-top: 300px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 15px;   
+}  
+
+// propiedades independientes 
+// index 
+
+.index{
+    display: grid;
+    grid-template-areas: "video"
+                         "imagen";
+    justify-content: center;               
+}
+
+.video{
+    grid-area: video;
+    text-align: center;
+    margin-top: $margenSuperior;
+}
+
+.video2{
+    display: none;
+}
+
+.intro{
+    grid-area: imagen;
+    margin-top: 30px;  
+}
+
+.intro2{
+    display: none;
+}
+
+.mapa{
+    grid-area: mapa;
+    margin-top: 50px;
+    margin-bottom: $margenSuperior;
+}
+
+// Las cabañas
+
+.cabañas{
+    @include grid;
+
+    grid-template-areas: "imagen1 texto1"
+    "texto2 imagen2"
+    "imagen3 texto3";
+    justify-content: center;
+    align-items: center;
+}
+
+.cabaña1{
+grid-area: imagen1;
+}
+
+.text1{
+grid-area: texto1;
+}
+
+.cabaña2{
+grid-area: imagen2;
+}
+
+.text2{
+grid-area: texto2;
+text-align: end;
+}
+
+.cabaña3{
+grid-area: imagen3;
+}
+
+.text3{
+grid-area: texto3;
+}
+
+//galeria
+
+.galeria{
+    margin-top: $margenSuperior;
+    @extend %flex      
+}
+
+.mainGaleria{
+    .galeria{
+        img{
+            margin: 20px;
+        } 
+    }
+} 
+
+//reservas
+
+.formulario{
+    margin-top: $margenSuperior;
+}
+
+.reservaCliente{
+    margin-top: 100px;
+    font-size: 30px;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    color: #c6243c;
+}
+
+//contacto
+
+.mainContacto{
+    display: grid;
+    grid-template-columns: 300px 300px 300px 300px;
+
+    justify-content: center;
+    justify-items: center;
+    
+    margin-top: $margenSuperior;
+    column-gap: 10px;
+    row-gap: 50px;
+
+    grid-template-areas: "mapa mapa form form"
+                         "tel mail face insta" ;
+}
+
+.mapaM{
+    display: none;
+}
+
+.mapaC{
+    grid-area: mapa;
+}
+
+.contacto {
+    grid-area: form;
+    font-size: 20px;
+    width: 600px; }
+  
+.contacto{
+    input{
+        width: 500px;
+    }
+} 
+  
+.contacto{
+    .mensaje{
+        width: 500px;
+        height: 200px;
+    }
+} 
+
+.tel{
+    grid-area: tel;   
+}
+
+.mail{
+    grid-area: mail;   
+}
+.face{
+    grid-area: face;  
+}
+.insta{
+    grid-area: insta;      
+}
+
+/*mobile*/
+
+@media only screen and (max-width:600px){
+
+    // menu
+    .logo{
+        height: 70px;
+    }
+    .navLabel{
+        display: block;
+        cursor: pointer;
+    }
+    
+    .navMenu{
+        position: fixed;
+        top: 80px;
+        bottom: 0;
+        background: #f5ecc2;
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        clip-path: circle(0 at center);
+        transition: clip-path 1s ease-in-out;
+    }
+    
+    .navInput:checked + .navMenu{
+        clip-path: circle(100% at center);
+    }  
+
+    // index
+
+    .video{
+        display: none;
+    }
+    
+    .intro{
+        display: none;
+    }
+    .intro2{
+        display: block;
+        text-align: center;
+        margin-top: $margenSuperior;
+    }
+
+    //cabañas
+
+    .cabañas{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .cabañas{
+        div{
+            img{
+                width: 400px;
+            }
+        }
+    } 
+    .cabañas{
+        div{
+            p{
+                width: 400px;
+                text-align: center;
+            }  
+        }
+    }      
+    
+    // Galeria
+
+    .mainGaleria .galeria img{
+        width: 400px;
+    }
+
+    // contacto
+
+    .mainContacto{
+        
+        display: grid;
+        
+        grid-template-columns: repeat(4, 80px);
+        margin-top: $margenSuperior;
+        column-gap: 0px;
+        row-gap: 30px;
+        
+        grid-template-areas: "mapa mapa mapa mapa" 
+                             "form form form form"
+                             "tel mail face insta" ;
+    }
+    
+    .mapaM{
+        display: block;
+        grid-area: mapa;
+    }
+   
+    .mapaC{
+        display: none;
+    }
+    
+    .contacto{
+        grid-area: form;
+        font-size: 20px;
+        width: 300px;      
+    }
+    
+    .mainContacto{
+        div{
+            img{
+                width: 60%;
+            }
+        }
+    }
+
+    .contacto{
+        input{
+            width: 300px;
+        }
+    }
+    
+    .contacto{
+        .mensaje{
+            width: 300px;
+            height: 150px;
+        }
+    }
+
+    .tel{
+        grid-area: tel;
+        
+    }
+    
+    .mail{
+        grid-area: mail;
+        
+    }
+    .face{
+        grid-area: face;
+        
+    }
+    .insta{
+        grid-area: insta;
+            
+    }
+}
+
+/*Tablet*/
+
+@media only screen and (max-width:950px) and (min-width:600px ){
+
+    // Menu
+    .logo{
+        height: 70px;
+    }
+      
+    .navLabel{
+        display: block;
+        cursor: pointer;
+    }
+    
+    .navMenu{
+        position: fixed;
+        top: 80px;
+        bottom: 0;
+        background: #f5ecc2;
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        clip-path: circle(0 at center);
+        transition: clip-path 1s ease-in-out;
+    }
+    
+    .navInput:checked + .navMenu{
+        clip-path: circle(100% at center);
+    }
+    
+    // index 
+    
+    .video{
+        display: none;
+    }
+    
+    .video2{
+        display: block;
+        margin-top: $margenSuperior;
+    }
+
+    .intro{
+        display: none;
+    }
+    .intro2{
+        display: block;
+        text-align: center;
+        margin-top: $margenSuperior;
+    }
+
+    // cabañas 
+
+    .cabañas{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .cabañas{
+        div{
+            p{
+                width: 400px;
+                text-align: center;
+            }        
+     
+        }    
+    }
+
+    // contacto
+
+    .mainContacto{
+        
+        display: grid;      
+        grid-template-columns: repeat(4, 80px);
+        margin-top: $margenSuperior;
+        column-gap: 50px;
+        row-gap: 30px;
+        
+        grid-template-areas: "mapa mapa mapa mapa" 
+                             "form form form form"
+                             "tel mail face insta" ;
+    }
+       
+    .mapaC{
+        display: block;
+        grid-area: mapa;
+    }
+    
+    .contacto{
+        grid-area: form;
+        font-size: 20px;
+        width: 600px;    
+    }
+
+    .contacto{
+        input{
+            width: 600px;
+        }
+    }
+    
+    .contacto{
+        .mensaje{
+            width: 600px;
+            height: 150px;
+        }
+    }
+
+    .tel{
+        grid-area: tel;
+        
+    }
+    
+    .mail{
+        grid-area: mail;
+        
+    }
+    .face{
+        grid-area: face;
+        
+    }
+    .insta{
+        grid-area: insta;
+            
+    }
+}

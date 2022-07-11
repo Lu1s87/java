@@ -1,0 +1,57 @@
+header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  
+}
+
+
+
+.nav{
+    background: white;
+    height: 100px;
+    color: #c6243c;
+  }
+  
+  .navContainer{
+    display: flex;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  .navMenu{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 3em;
+  }
+  
+  .navItem{
+    color: #c6243c;
+    text-decoration: none;
+    --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;         
+  }
+  
+  .navItem::after{
+    content: "";
+    display: block;
+    background: #c6243c;
+    width: 90%;
+    margin-top: 3px;
+    height: 3px;
+    clip-path: var(--clippy);
+    transition: clip-path .4s;
+  }
+  .navItem:hover{
+      --clippy: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  
+  .navLabel, .navInput{
+      display: none;
+  }
