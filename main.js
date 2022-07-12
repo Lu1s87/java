@@ -37,7 +37,8 @@ function validarFormulario (event) {
             cabana = cabanas[2];
             break;
         default:
-            alert("tenes que elgir una cabaña")
+            let avisoCaba = document.getElementById("checkCabana");
+            avisoCaba.innerText = "* seleccione una cabaña";
             cantidadPersonas = isNaN;
             break;              
     }
@@ -56,7 +57,8 @@ function validarFormulario (event) {
             cocheras.push("NO");
             break;
         default:
-            alert("No elegiste cochera")
+            let avisoCoche = document.getElementById("checkCoche");
+            avisoCoche.innerText = "* seleccione una opción de cochera";
             cochera = isNaN;
             break;              
     }
@@ -67,10 +69,12 @@ function validarFormulario (event) {
     //  Reserva - Presupuesto
 
     if (nombre == "") {
-        alert("No ingresaste tu nombre");
+        let avisoNombre = document.getElementById("checkNombre")
+            avisoNombre.innerText = "* ingrese un nombre";
     }
-    if (dias =="") {
-        alert("Ingresa la cantiad de dias");
+    if (dias == "") {
+        let avisoDias = document.getElementById("checkDias")
+            avisoDias.innerText = "* ingrese cantidad de dias";
         dias = "NO";    
     }
 
@@ -88,6 +92,7 @@ function validarFormulario (event) {
         mensaje.innerText = "* " + nombre + ", SOLICITASTE UNA RESERVA, POR UNA CABAÑA "+cabana+ " SIN COCHERA, EL PRESUPUESTO ES DE $ " + presupuesto;
     }
 
+    
 
     // Objetos y arrays - Creando base de datos clientes
 

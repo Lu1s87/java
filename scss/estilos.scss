@@ -136,6 +136,15 @@ grid-area: texto3;
 
 .formulario{
     margin-top: $margenSuperior;
+    input{
+        margin-bottom: 10px;
+    }
+    select{
+        margin-bottom: 10px;
+    }
+    button{
+        margin-top: 5px;
+    }
 }
 
 .reservaCliente{
@@ -146,6 +155,15 @@ grid-area: texto3;
     justify-content: center;
     justify-items: center;
     color: #c6243c;
+}
+
+.avisos{
+    display: flex;
+    margin-top: 20px;
+    p{
+        margin-left: 25px;
+
+    }
 }
 
 //contacto

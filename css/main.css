@@ -6986,6 +6986,12 @@ footer {
 
 .formulario {
   margin-top: 130px; }
+  .formulario input {
+    margin-bottom: 10px; }
+  .formulario select {
+    margin-bottom: 10px; }
+  .formulario button {
+    margin-top: 5px; }
 
 .reservaCliente {
   margin-top: 100px;
@@ -6995,6 +7001,12 @@ footer {
   justify-content: center;
   justify-items: center;
   color: #c6243c; }
+
+.avisos {
+  display: flex;
+  margin-top: 20px; }
+  .avisos p {
+    margin-left: 25px; }
 
 .mainContacto {
   display: grid;
