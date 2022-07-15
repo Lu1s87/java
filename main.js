@@ -17,71 +17,70 @@ function validarFormulario (event) {
     console.log(dias)
     console.log(cochera)
 
-    // Tamaño de la cabaña
+    // Seccion cabaña
 
     const cabanas = ["SIMPLE", "DOBLE", "FAMILIAR"];
     let cabana = ""
-    console.log(cabanas);
+
+    let avisoCaba = document.getElementById("checkCabana");
 
     switch(cantidadPersonas){
         case 1:
             cantidadPersonas = 2500;
-            cabana = cabanas[0];               
+            cabana = cabanas[0];
+            avisoCaba.innerText = "";               
             break;
         case 2:
             cantidadPersonas = 3500;
             cabana = cabanas[1];
+            avisoCaba.innerText = "";
             break;
         case 3:
             cantidadPersonas = 5000;
             cabana = cabanas[2];
+            avisoCaba.innerText = "";
             break;
-        default:
-            let avisoCaba = document.getElementById("checkCabana");
+        default:            
             avisoCaba.innerText = "* seleccione una cabaña";
             cantidadPersonas = isNaN;
             break;              
     }
 
-    // Cochera
+    // Seccion cochera
 
     const cocheras = [];
+
+    let avisoCoche = document.getElementById("checkCoche");
 
     switch(cochera){
         case 1:
             cochera = 500;
             cocheras.push("SI");
+            avisoCoche.innerText = "";
             break;
         case 2:
             cochera = 0;
             cocheras.push("NO");
+            avisoCoche.innerText = "";
             break;
-        default:
-            let avisoCoche = document.getElementById("checkCoche");
+        default:            
             avisoCoche.innerText = "* seleccione una opción de cochera";
             cochera = isNaN;
             break;              
     }
 
-    console.log(cochera)
-    console.log(cocheras)
+    // Validacion nombre y dias con operador ternario
+
+    let avisoNombre = document.getElementById("checkNombre");
+    nombre === "" ? avisoNombre.innerText = "* ingrese un nombre" :  avisoNombre.innerText = "";
+
+    let avisoDias = document.getElementById("checkDias");
+    dias == "" ? (avisoDias.innerText = "* ingrese cantidad de dias", dias = "NO") : avisoDias.innerText = "";
 
     //  Reserva - Presupuesto
-
-    if (nombre == "") {
-        let avisoNombre = document.getElementById("checkNombre")
-            avisoNombre.innerText = "* ingrese un nombre";
-    }
-    if (dias == "") {
-        let avisoDias = document.getElementById("checkDias")
-            avisoDias.innerText = "* ingrese cantidad de dias";
-        dias = "NO";    
-    }
-
+   
     let presupuesto = (cantidadPersonas + cochera) * dias;
-
-    
-    
+   
     let mensaje = document.getElementById("mensaje")
 
     if (isNaN(presupuesto)) {
@@ -92,24 +91,15 @@ function validarFormulario (event) {
         mensaje.innerText = "* " + nombre + ", SOLICITASTE UNA RESERVA, POR UNA CABAÑA "+cabana+ " SIN COCHERA, EL PRESUPUESTO ES DE $ " + presupuesto;
     }
 
-    
-
     // Objetos y arrays - Creando base de datos clientes
 
     const cliente = {nombre, cabana, dias, cocheras, presupuesto};
 
-    const reserva = JSON.stringify(cliente);
-
-    localStorage.setItem ("reserva", reserva);
-
-    console.log(cliente)
-
-
-
-
+    localStorage.setItem("reserva", JSON.stringify(cliente));
+    
 }
 
-
+let clienteStorage = JSON.parse(localStorage.getItem("reserva"))
 
 
 
