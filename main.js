@@ -9,12 +9,10 @@ function validarFormulario (event) {
 
     let nombre = form.children[0].value.toUpperCase();
     let cantidadPersonas = Number(form.children[1].value);
-    let dias = Number(form.children[2].value);
-    let cochera = Number(form.children[3].value);
+    let cochera = Number(form.children[2].value);
 
     console.log(nombre)
     console.log(cantidadPersonas)
-    console.log(dias)
     console.log(cochera)
 
     // Seccion cabaña
@@ -71,11 +69,13 @@ function validarFormulario (event) {
 
     // Validacion nombre y dias con operador ternario
 
+    let dias = JSON.parse(localStorage.getItem("dias"));
+    
     let avisoNombre = document.getElementById("checkNombre");
     nombre === "" ? avisoNombre.innerText = "* ingrese un nombre" :  avisoNombre.innerText = "";
 
     let avisoDias = document.getElementById("checkDias");
-    dias == "" ? (avisoDias.innerText = "* ingrese cantidad de dias", dias = "NO") : avisoDias.innerText = "";
+    dias == null ? (avisoDias.innerText = "* selecione una fecha", dias = "NO") : avisoDias.innerText = "";
 
     //  Reserva - Presupuesto
    
@@ -86,9 +86,9 @@ function validarFormulario (event) {
     if (isNaN(presupuesto)) {
         mensaje.innerText = "ALGO SALIO MAL, INTENTALO DE NUEVO O COMUNICATE CON NOSOTROS VIA MAIL";
     }else if (cochera == 500) {
-        mensaje.innerText = "* " + nombre + ", SOLICITASTE UNA RESERVA, POR UNA CABAÑA "+cabana+ " CON COCHERA, EL PRESUPUESTO ES DE $ " + presupuesto;
+        mensaje.innerText = "* " + nombre + ", SOLICITASTE UNA RESERVA DE " +dias+ " DIAS, DE UNA CABAÑA "+cabana+ " CON COCHERA, EL PRESUPUESTO ES DE $ " + presupuesto+". DENTRO DE POCO NOS COMUNICAREMOS CON VOS BRINDANDOTE LOS DATOS DE PAGO PARA CONFIRMAR LA RESERVA";
     }else{
-        mensaje.innerText = "* " + nombre + ", SOLICITASTE UNA RESERVA, POR UNA CABAÑA "+cabana+ " SIN COCHERA, EL PRESUPUESTO ES DE $ " + presupuesto;
+        mensaje.innerText = "* " + nombre + ", SOLICITASTE UNA RESERVA DE " +dias+ " DIAS, DE UNA CABAÑA "+cabana+ " SIN COCHERA, EL PRESUPUESTO ES DE $ " + presupuesto+". DENTRO DE POCO NOS COMUNICAREMOS CON VOS BRINDANDOTE LOS DATOS DE PAGO PARA CONFIRMAR LA RESERVA";
     }
 
     // Objetos y arrays - Creando base de datos clientes
@@ -96,10 +96,10 @@ function validarFormulario (event) {
     const cliente = {nombre, cabana, dias, cocheras, presupuesto};
 
     localStorage.setItem("reserva", JSON.stringify(cliente));
-    
+
 }
 
-let clienteStorage = JSON.parse(localStorage.getItem("reserva"))
+
 
 
 
