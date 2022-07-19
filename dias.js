@@ -49,5 +49,6 @@ diaIngreso.addEventListener('change', () => {
 let boton = document.getElementById("cancelar")
 boton.addEventListener('click', () => {
     document.getElementById('salida').style.visibility = "hidden";
+    localStorage.removeItem ("dias")
 })
 
