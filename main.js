@@ -78,7 +78,7 @@ function validarFormulario (event) {
     dias == null ? (avisoDias.innerText = "* selecione una fecha", dias = "NO") : avisoDias.innerText = "";
 
     //  Reserva - Presupuesto
-   
+
     let presupuesto = (cantidadPersonas + cochera) * dias;
    
     let mensaje = document.getElementById("mensaje")
@@ -93,7 +93,25 @@ function validarFormulario (event) {
 
     // Objetos y arrays - Creando base de datos clientes
 
-    const cliente = {nombre, cabana, dias, cocheras, presupuesto};
+    const ingreso = JSON.parse(localStorage.getItem("diaIngreso"));
+    const salida = JSON.parse(localStorage.getItem("diaSalida"));
+
+    const cliente = {nombre, ingreso, salida, cabana, dias, cocheras, presupuesto};
+    
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+        title: "Pedido de reserva",
+        body: cliente,
+        userId: 1,
+        }),
+        headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+
+    .then((response) => response.json())
+    .then((data) => console.log(data))    
 
     localStorage.setItem("reserva", JSON.stringify(cliente));
 

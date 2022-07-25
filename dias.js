@@ -20,6 +20,7 @@ diaIngreso.addEventListener('change', () => {
     const m = Number(mes);
     const d = Number(dia);
 
+    localStorage.setItem("diaIngreso", JSON.stringify(fechaIngresoArray));
     console.log(fechaIngresoArray)
     let diaI = DateTime.local (a,m,d)
 
@@ -34,6 +35,7 @@ diaIngreso.addEventListener('change', () => {
         const ms = Number(mes);
         const ds = Number(dia);
 
+        localStorage.setItem("diaSalida", JSON.stringify(fechaSalidaArray));
         console.log(fechaSalidaArray)
         let diaS = DateTime.local (as,ms,ds)
 
@@ -49,6 +51,8 @@ diaIngreso.addEventListener('change', () => {
 let boton = document.getElementById("cancelar")
 boton.addEventListener('click', () => {
     document.getElementById('salida').style.visibility = "hidden";
-    localStorage.removeItem ("dias")
+    localStorage.removeItem ("dias");
+    localStorage.removeItem ("diaIngreso");
+    localStorage.removeItem ("diaSalida");
 })
 
