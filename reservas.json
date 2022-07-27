@@ -1,0 +1,8 @@
+[
+    {"nombre": "Mabel Contreras", "fechaIngreso": ["2022","08","06"], "fechaSalida": ["2022","08","08"], "dias": 2, "cochera": "SI", "cabana": "SIMPLE", "presupuesto": 6000},
+    {"nombre": "Fabricio Longano", "fechaIngreso": ["2022","08","13"], "fechaSalida": ["2022","08","15"], "dias": 2, "cochera": "NO", "cabana": "DOBLE", "presupuesto": 7000},
+    {"nombre": "Patricio Gonzalez", "fechaIngreso": ["2022","08","20"], "fechaSalida": ["2022","08","22"], "dias": 2, "cochera": "NO", "cabana": "FAMILIAR", "presupuesto": 10000},
+    {"nombre": "Sebastian Prospero", "fechaIngreso": ["2022","08","23"], "fechaSalida": ["2022","08","26"], "dias": 3, "cochera": "SI", "cabana": "SIMPLE", "presupuesto": 7500},
+    {"nombre": "Emiliano ALvarez", "fechaIngreso": ["2022","09","03"], "fechaSalida": ["2022","08","05"], "dias": 2, "cochera": "NO", "cabana": "DOBLE", "presupuesto": 10000}
+]
+

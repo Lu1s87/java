@@ -8,12 +8,14 @@ function validarFormulario (event) {
     let form = event.target;
 
     let nombre = form.children[0].value.toUpperCase();
-    let cantidadPersonas = Number(form.children[1].value);
-    let cochera = Number(form.children[2].value);
+    let mail = form.children[1].value;    
+    let cantidadPersonas = Number(form.children[2].value);
+    let cochera = Number(form.children[3].value);
 
-    console.log(nombre)
-    console.log(cantidadPersonas)
-    console.log(cochera)
+    console.log(nombre);
+    console.log(mail);
+    console.log(cantidadPersonas);
+    console.log(cochera);
 
     // Seccion cabaña
 
@@ -67,12 +69,15 @@ function validarFormulario (event) {
             break;              
     }
 
-    // Validacion nombre y dias con operador ternario
+    // Validacion nombre, dias, mail 
 
     let dias = JSON.parse(localStorage.getItem("dias"));
     
     let avisoNombre = document.getElementById("checkNombre");
-    nombre === "" ? avisoNombre.innerText = "* ingrese un nombre" :  avisoNombre.innerText = "";
+    nombre === "" ? (avisoNombre.innerText = "* ingrese un nombre", dias = "NO" ) :  avisoNombre.innerText = "";
+
+    let avisoMail = document.getElementById("checkMail");
+    mail === "" ? (avisoMail.innerText = "* Ingrese un e-mail", dias = "NO") :  avisoMail.innerText = "";
 
     let avisoDias = document.getElementById("checkDias");
     dias == null ? (avisoDias.innerText = "* selecione una fecha", dias = "NO") : avisoDias.innerText = "";
@@ -91,7 +96,6 @@ function validarFormulario (event) {
         mensaje.innerText = "* " + nombre + ", SOLICITASTE UNA RESERVA DE " +dias+ " DIAS, DE UNA CABAÑA "+cabana+ " SIN COCHERA, EL PRESUPUESTO ES DE $ " + presupuesto+". DENTRO DE POCO NOS COMUNICAREMOS CON VOS BRINDANDOTE LOS DATOS DE PAGO PARA CONFIRMAR LA RESERVA";
     }
 
-    // Objetos y arrays - Creando base de datos clientes
 
     const ingreso = JSON.parse(localStorage.getItem("diaIngreso"));
     const salida = JSON.parse(localStorage.getItem("diaSalida"));
@@ -117,7 +121,27 @@ function validarFormulario (event) {
 
 }
 
+const reservas = document.getElementById("reserva");
 
+fetch("/reservas.json")
+    .then( (response) => response.json() )
+    .then( (data) => {
+        mostrarReservas(data);
+    } )
+
+
+const mostrarReservas = (data) => {
+    data.forEach(post => {
+        const li = document.createElement("li");
+        li.innerHTML = `                    
+                        <td>Ingreso: ${post.fechaIngreso} ---</td>
+                        <td>Salida: ${post.fechaSalida} ---</td>
+                        <td>Cabaña: ${post.cabana}</td>
+                                                 
+        `
+        reservas.append(li)
+    });
+}
 
 
 
