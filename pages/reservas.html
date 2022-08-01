@@ -76,10 +76,10 @@
                 <option value="2">NO</option>
             </select>
             
-            <label for="start">Fecha de ingreso:</label>  
+            <label for="start" class="calendarioIngreso">Fecha de ingreso:</label>  
             <input type="date" id="start" name="trip-start">
-            <div id="salida">
-                <label for="start">Fecha de egreso:</label>    
+            <div id="salida" class="divCalendario">
+                <label for="start" class="calendarioSalida">Fecha de egreso:</label>    
                 <input type="date" id="finish" name="trip-start"> 
             </div>
 
@@ -96,19 +96,18 @@
             <p Id="checkCoche"></p>
         </div>
 
-        <h2>últimas reservas</h2>
-        <hr/>
-
-        <ul id="reserva"></ul>
-        
-        
         <!-- Reserva -->
         
         <div>
             <h1 id="mensaje" class="reservaCliente"></h1>
             <h2 id="mensaje2" class="avisos"></h2>
-        </div>    
+        </div>   
 
+        <h2>últimas reservas</h2>
+        <hr/>
+
+        <ul id="reserva"></ul>
+        
         
     </main>
   

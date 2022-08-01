@@ -6994,8 +6994,8 @@ footer {
     margin-top: 5px; }
 
 .reservaCliente {
-  margin-top: 100px;
-  font-size: 30px;
+  margin-top: 10px;
+  font-size: 20px;
   text-align: center;
   display: grid;
   justify-content: center;
@@ -7007,6 +7007,12 @@ footer {
   margin-top: 20px; }
   .avisos p {
     margin-left: 25px; }
+
+.calendarioIngreso {
+  display: flex; }
+
+.calendarioSalida {
+  display: flex; }
 
 .mainContacto {
   display: grid;
